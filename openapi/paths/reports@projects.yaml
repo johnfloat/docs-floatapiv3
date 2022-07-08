@@ -1,0 +1,21 @@
+get:
+  tags:
+    - Reports
+  summary: Retrieve a single project report
+  description: >-
+    Returns a single project report. (Note: request limits are lower for report
+    endpoints.)
+  operationId: getReportProject
+  responses:
+    '200':
+      description: A single project report between two dates.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ReportsProjects.yaml
+        application/xml:
+          schema:
+            $ref: ../components/schemas/ReportsProjects.yaml
+    '404':
+      description: The report does not exist.
+      content: {}

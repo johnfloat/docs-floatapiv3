@@ -1,0 +1,71 @@
+get:
+  tags:
+    - Time Off
+  summary: List of time off scheduled.
+  operationId: getTimeoffs
+  responses:
+    '200':
+      description: List of time off
+      headers:
+        X-Pagination-Current-Page:
+          description: Current page number
+          schema:
+            type: integer
+        X-Pagination-Total-Count:
+          description: Total number of items
+          schema:
+            type: integer
+        X-Pagination-Page-Count:
+          description: Total number of pages
+          schema:
+            type: integer
+        X-Pagination-Per-Page:
+          description: Number of items per page
+          schema:
+            type: integer
+      content:
+        application/json:
+          schema:
+            title: Array of time off
+            type: array
+            items:
+              $ref: ../components/schemas/Timeoff.yaml
+        application/xml:
+          schema:
+            title: Array of time off
+            type: array
+            items:
+              $ref: ../components/schemas/Timeoff.yaml
+post:
+  tags:
+    - Time Off
+  summary: Add a new time off
+  operationId: addTimeoff
+  requestBody:
+    description: The time off to create
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/Timeoff.yaml
+      application/xml:
+        schema:
+          $ref: ../components/schemas/Timeoff.yaml
+    required: false
+  responses:
+    '201':
+      description: >-
+        If the time off was succesfully created, the response returns the full
+        information about that time off.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Timeoff.yaml
+        application/xml:
+          schema:
+            $ref: ../components/schemas/Timeoff.yaml
+    '422':
+      description: >
+        Data validation failure if fields are missing or the time off already
+        exists.
+      content: {}
+  x-codegen-request-body-name: Timeoff

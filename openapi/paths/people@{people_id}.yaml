@@ -1,0 +1,72 @@
+get:
+  tags:
+    - People
+  summary: Retrieve a single person
+  operationId: getPerson
+  parameters:
+    - name: people_id
+      in: path
+      description: The person's id
+      required: true
+      schema:
+        type: integer
+  responses:
+    '200':
+      description: Details of a single person
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Person.yaml
+        application/xml:
+          schema:
+            $ref: ../components/schemas/Person.yaml
+    '404':
+      description: The person does not exist.
+      content: {}
+delete:
+  tags:
+    - People
+  summary: Delete a person
+  operationId: deletePerson
+  parameters:
+    - name: people_id
+      in: path
+      description: people id to delete
+      required: true
+      schema:
+        type: integer
+  responses:
+    '204':
+      description: Successful deletion will return a 204 response status.
+      content: {}
+    '404':
+      description: The person does not exist.
+      content: {}
+patch:
+  tags:
+    - People
+  summary: Update a person's details
+  operationId: updatePerson
+  parameters:
+    - name: people_id
+      in: path
+      description: The person's id
+      required: true
+      schema:
+        type: integer
+  responses:
+    '200':
+      description: >-
+        On a successful update of a person, the response returns the full
+        information about that person.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Person.yaml
+        application/xml:
+          schema:
+            $ref: ../components/schemas/Person.yaml
+    '422':
+      description: |
+        Data validation failure.    
+      content: {}

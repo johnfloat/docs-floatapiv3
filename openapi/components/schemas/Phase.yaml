@@ -1,0 +1,67 @@
+title: Phase
+required:
+  - end_date
+  - name
+  - project_id
+  - start_date
+type: object
+properties:
+  phase_id:
+    type: integer
+    description: The ID of this phase (read-only)
+    example: 6754
+  project_id:
+    type: integer
+    description: The ID of the project to which this phase belongs
+    example: 4567
+  name:
+    maxLength: 200
+    type: string
+    description: The name of the phase
+    example: Design
+  start_date:
+    type: string
+    description: The start date of this phase
+    format: 'date:YYYY-MM-DD'
+    example: 2020-12-12T00:00:00.000Z
+  end_date:
+    type: string
+    description: The end date of this phase
+    format: 'date:YYYY-MM-DD'
+    example: 2020-12-29T00:00:00.000Z
+  color:
+    type: string
+    description: Phase's color in hexadecimal (defaults to project color)
+    example: 0095D7
+  notes:
+    type: string
+    description: Notes for this phase
+    example: Due at the start of July. Paul to present
+  budget_total:
+    type: integer
+    description: >-
+      The budget amount for Total hours or Total fee budgets if this phase's
+      project budget is per phase
+  default_hourly_rate:
+    type: integer
+    description: The default hourly rate for fee-based budgets
+  non_billable:
+    type: integer
+    description: 'Is this phase billable? 0 = Billable, 1 = Non-billable'
+    example: 1
+  tentative:
+    type: integer
+    description: 'Is this phase tentative? 1 = Yes, 0 = No'
+    example: 0
+  active:
+    type: integer
+    description: 'Is this phase active or archived? 1 = Active, 0 = Archived'
+    example: 1
+  created:
+    type: string
+    description: Date this record was created (read-only)
+    example: 2019-09-22T00:00:00.000Z
+  modified:
+    type: string
+    description: Date this record was last modified (read-only)
+    example: 2019-11-11T07:38:44.000Z

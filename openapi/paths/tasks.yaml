@@ -1,0 +1,71 @@
+get:
+  tags:
+    - Tasks
+  summary: >-
+    List tasks. This includes any tasks or repeating task sets that start or end
+    within the date range specified.
+  operationId: getTasks
+  responses:
+    '200':
+      description: List of tasks.
+      headers:
+        X-Pagination-Current-Page:
+          description: Current page number
+          schema:
+            type: integer
+        X-Pagination-Total-Count:
+          description: Total number of items
+          schema:
+            type: integer
+        X-Pagination-Page-Count:
+          description: Total number of pages
+          schema:
+            type: integer
+        X-Pagination-Per-Page:
+          description: Number of items per page
+          schema:
+            type: integer
+      content:
+        application/json:
+          schema:
+            title: Array of tasks
+            type: array
+            items:
+              $ref: ../components/schemas/Task.yaml
+        application/xml:
+          schema:
+            title: Array of tasks
+            type: array
+            items:
+              $ref: ../components/schemas/Task.yaml
+post:
+  tags:
+    - Tasks
+  summary: Add a new task
+  operationId: addTask
+  requestBody:
+    description: The task to create.
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/Task.yaml
+      application/xml:
+        schema:
+          $ref: ../components/schemas/Task.yaml
+    required: false
+  responses:
+    '201':
+      description: >-
+        If the task was succesfully created, the response returns the full
+        information about that task.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Task.yaml
+        application/xml:
+          schema:
+            $ref: ../components/schemas/Task.yaml
+    '422':
+      description: Data validation failure.
+      content: {}
+  x-codegen-request-body-name: task

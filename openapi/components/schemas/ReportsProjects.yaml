@@ -1,0 +1,30 @@
+type: object
+properties:
+  name:
+    type: string
+    description: The name of the project
+    example: Website Design
+  project_id:
+    type: integer
+    description: The project id
+    example: 12325
+  client_id:
+    type: integer
+    description: The client id that this project belongs to
+    example: 23250
+  client:
+    type: string
+    description: The name of the matching client
+    example: Black Agency
+  scheduled:
+    type: integer
+    description: Number of task hours scheduled
+    example: 152
+  billable:
+    type: integer
+    description: Number of billable task hours scheduled
+    example: 100
+  nonBillable:
+    type: integer
+    description: Number of non-billable task hours scheduled
+    example: 52

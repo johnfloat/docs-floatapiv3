@@ -1,0 +1,101 @@
+get:
+  tags:
+    - Logged Time
+  summary: Retrieve a single logged time entry.
+  description: Returns a single logged time entry
+  operationId: getLoggedTime
+  parameters:
+    - name: logged_time_id
+      in: path
+      description: Unique ID of the specific logged time entry to be retrieved
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: A logged time entry
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/LoggedTime.yaml
+        application/xml:
+          schema:
+            $ref: ../components/schemas/LoggedTime.yaml
+    '403':
+      description: Time Tracking is not enabled for this team
+      content: {}
+    '404':
+      description: The specified logged time entry does not exist
+      content: {}
+    '422':
+      description: Data validation error
+      content: {}
+delete:
+  tags:
+    - Logged Time
+  summary: Delete an existing logged time entry.
+  operationId: deleteLoggedTime
+  parameters:
+    - name: logged_time_id
+      in: path
+      description: Unique ID of the specific logged time entry to be retrieved
+      required: true
+      schema:
+        type: string
+  responses:
+    '204':
+      description: The logged time entry was successfully deleted
+      content: {}
+    '403':
+      description: Time Tracking is not enabled for this team
+      content: {}
+    '404':
+      description: The specified logged time entry does not exist
+      content: {}
+    '422':
+      description: Data validation error
+      content: {}
+patch:
+  tags:
+    - Logged Time
+  summary: Modify an existing logged time entry.
+  operationId: updateLoggedTime
+  parameters:
+    - name: logged_time_id
+      in: path
+      description: Unique ID of the specific logged time entry to be retrieved
+      required: true
+      schema:
+        type: string
+  requestBody:
+    description: Time being updated
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/LoggedTime.yaml
+      application/xml:
+        schema:
+          $ref: ../components/schemas/LoggedTime.yaml
+    required: false
+  responses:
+    '200':
+      description: >-
+        If the logged time was successfully updated the modified entry is
+        returned
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/LoggedTime.yaml
+        application/xml:
+          schema:
+            $ref: ../components/schemas/LoggedTime.yaml
+    '403':
+      description: Time Tracking is not enabled for this team
+      content: {}
+    '404':
+      description: The specified logged time entry does not exist
+      content: {}
+    '422':
+      description: Data validation error
+      content: {}
+  x-codegen-request-body-name: LoggedTime

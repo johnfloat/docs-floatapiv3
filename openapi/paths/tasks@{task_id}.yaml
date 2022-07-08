@@ -1,0 +1,72 @@
+get:
+  tags:
+    - Tasks
+  summary: Retrieve a single task
+  description: Returns a single task.
+  operationId: getTask
+  parameters:
+    - name: task_id
+      in: path
+      description: The task's ID
+      required: true
+      schema:
+        type: integer
+  responses:
+    '200':
+      description: Details of a single task.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Task.yaml
+        application/xml:
+          schema:
+            $ref: ../components/schemas/Task.yaml
+    '404':
+      description: The task does not exist.
+      content: {}
+delete:
+  tags:
+    - Tasks
+  summary: Delete a task
+  operationId: deleteTask
+  parameters:
+    - name: task_id
+      in: path
+      description: task id to delete
+      required: true
+      schema:
+        type: integer
+  responses:
+    '204':
+      description: Successful deletion will return a 204 response status.
+      content: {}
+    '404':
+      description: The task does not exist.
+      content: {}
+patch:
+  tags:
+    - Tasks
+  summary: Update a task's details
+  operationId: updateTask
+  parameters:
+    - name: task_id
+      in: path
+      description: The task's ID
+      required: true
+      schema:
+        type: integer
+  responses:
+    '200':
+      description: >-
+        On a successful update of a task, the response returns the full
+        information about that task.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Task.yaml
+        application/xml:
+          schema:
+            $ref: ../components/schemas/Task.yaml
+    '422':
+      description: Data validation failure.
+      content: {}

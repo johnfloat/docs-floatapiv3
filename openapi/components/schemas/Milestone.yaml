@@ -1,0 +1,28 @@
+title: Milestone
+required:
+  - date
+  - name
+  - project_id
+type: object
+properties:
+  milestone_id:
+    type: integer
+    description: The ID of this milestone. Read-only
+    example: 1
+  name:
+    maxLength: 200
+    type: string
+    description: The name of the milestone
+    example: 'Sprint #14'
+  project_id:
+    type: integer
+    description: The project that this milestone belongs to
+    example: 1
+  date:
+    type: string
+    description: Start date of the milestone
+    example: '2019-12-01 09:00'
+  end_date:
+    type: string
+    description: End date of the milestone if more than 1 day
+    example: '2019-12-05 17:00'

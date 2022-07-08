@@ -1,0 +1,74 @@
+title: Project
+required:
+  - name
+type: object
+properties:
+  project_id:
+    type: integer
+    description: 'The ID of this project. Read-only: ignored when creating a project'
+    example: 4567
+  name:
+    maxLength: 200
+    type: string
+    description: The name of the project
+    example: Website Redesign
+  client_id:
+    type: integer
+    description: The ID of the project's client
+    example: 45672
+  color:
+    type: string
+    description: Project's color in hexadecimal
+    example: 0095D7
+  notes:
+    type: string
+    description: Notes for this project
+    example: Due at the start of July. Paul to present
+  tags:
+    type: array
+    description: List of tags
+    example:
+      - digital
+      - pitch
+    items:
+      $ref: ./ProjectTag.yaml
+  budget_type:
+    type: integer
+    description: 'Is there a project budget? 1 = Total hours, 2 = Total fee, 3 = Hourly fee'
+    example: 1
+  budget_total:
+    type: number
+    description: The budget amount for Total hours or Total fee budgets
+    example: 1000.5
+  default_hourly_rate:
+    type: number
+    description: The default hourly rate for fee-based budgets
+    example: 55.5
+  non_billable:
+    type: integer
+    description: 'Is this project billable? 0 = Billable, 1 = Non-billable'
+    example: 1
+  tentative:
+    type: integer
+    description: 'Is this project tentative? 1 = Yes, 0 = No'
+    example: 0
+  active:
+    type: integer
+    description: 'Is this project active or archived? 1 = Active, 0 = Archived'
+    example: 1
+  project_manager:
+    type: integer
+    description: Account ID of the assigned project manager
+    example: 3464
+  all_pms_schedule:
+    type: integer
+    description: 'Do all project managers have scheduling rights? 1 = Yes, 0 = No'
+    example: 0
+  created:
+    type: string
+    description: Date this record was created (read-only)
+    example: 2019-09-22T00:00:00.000Z
+  modified:
+    type: string
+    description: Date this record was last modified (read-only)
+    example: 2019-11-11T07:38:44.000Z

@@ -1,0 +1,52 @@
+get:
+  tags:
+    - Time Off Types
+  summary: Retrieve a single time off type
+  description: Returns a single time off type.
+  operationId: getTimeoffType
+  parameters:
+    - name: timeoff_type_id
+      in: path
+      description: The time off type's ID
+      required: true
+      schema:
+        type: integer
+  responses:
+    '200':
+      description: A time off type
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/TimeoffType.yaml
+        application/xml:
+          schema:
+            $ref: ../components/schemas/TimeoffType.yaml
+patch:
+  tags:
+    - Time Off Types
+  summary: Update a time off type's details
+  operationId: updateTimeoffType
+  parameters:
+    - name: timeoff_type_id
+      in: path
+      description: The time off type's ID
+      required: true
+      schema:
+        type: integer
+  responses:
+    '200':
+      description: >-
+        On a successful update of a time off type, the response returns the full
+        information about that time off type.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/TimeoffType.yaml
+        application/xml:
+          schema:
+            $ref: ../components/schemas/TimeoffType.yaml
+    '422':
+      description: >
+        Data validation failure if fields are missing or the time off type
+        already exists.       
+      content: {}

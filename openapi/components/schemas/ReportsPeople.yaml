@@ -1,0 +1,56 @@
+type: object
+properties:
+  name:
+    type: string
+    description: The name of the person
+    example: Erin Riggins
+  people_id:
+    type: integer
+    description: The person id
+    example: 12325
+  department_id:
+    type: integer
+    description: The department id that this person belongs to
+    example: 23250
+  department:
+    type: string
+    description: The name of the matching department
+    example: Design
+  people_type_id:
+    type: integer
+    description: >-
+      Is this person an 1 = Employee (default), 2 = Contractor, 3 = Unassigned
+      Role?
+    example: 1
+  wk_day_hrs:
+    type: integer
+    description: Their default working hours per day
+    example: 8
+  capacity:
+    type: integer
+    description: Number of work hours available
+    example: 152
+  timeoff:
+    type: integer
+    description: Number of time off hours scheduled
+    example: 12
+  scheduled:
+    type: integer
+    description: Number of task hours scheduled
+    example: 44
+  billable:
+    type: integer
+    description: Number of billable task hours scheduled
+    example: 40
+  nonBillable:
+    type: integer
+    description: Number of non-billable task hours scheduled
+    example: 14
+  overtime:
+    type: integer
+    description: Number of overtime hours scheduled
+    example: 2
+  unscheduled:
+    type: integer
+    description: Number of unscheduled hours available
+    example: 40

@@ -1,0 +1,70 @@
+get:
+  tags:
+    - Clients
+  summary: List clients
+  operationId: getClients
+  responses:
+    '200':
+      description: List of clients
+      headers:
+        X-Pagination-Current-Page:
+          description: Current page number
+          schema:
+            type: integer
+        X-Pagination-Total-Count:
+          description: Total number of items
+          schema:
+            type: integer
+        X-Pagination-Page-Count:
+          description: Total number of pages
+          schema:
+            type: integer
+        X-Pagination-Per-Page:
+          description: Number of items per page
+          schema:
+            type: integer
+      content:
+        application/json:
+          schema:
+            title: Array of clients
+            type: array
+            items:
+              $ref: ../components/schemas/Client.yaml
+        application/xml:
+          schema:
+            title: Array of clients
+            type: array
+            items:
+              $ref: ../components/schemas/Client.yaml
+post:
+  tags:
+    - Clients
+  summary: Add a new client
+  operationId: addClient
+  requestBody:
+    description: The client to create
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/Client.yaml
+      application/xml:
+        schema:
+          $ref: ../components/schemas/Client.yaml
+    required: false
+  responses:
+    '201':
+      description: >-
+        If the client was succesfully created, the response returns the full
+        information about that client.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Client.yaml
+        application/xml:
+          schema:
+            $ref: ../components/schemas/Client.yaml
+    '422':
+      description: |
+        Data validation failure.
+      content: {}
+  x-codegen-request-body-name: data

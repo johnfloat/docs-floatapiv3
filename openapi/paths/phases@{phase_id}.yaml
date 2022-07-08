@@ -1,0 +1,83 @@
+get:
+  tags:
+    - Phases
+  summary: Retrieve a single phase.
+  description: Retrieve a single phase
+  operationId: getPhase
+  parameters:
+    - name: phase_id
+      in: path
+      description: The phase's ID
+      required: true
+      schema:
+        type: integer
+  responses:
+    '200':
+      description: Details of a single phase
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Phase.yaml
+        application/xml:
+          schema:
+            $ref: ../components/schemas/Phase.yaml
+    '404':
+      description: The phase does not exist.
+      content: {}
+delete:
+  tags:
+    - Phases
+  summary: Delete a phase
+  operationId: deletePhase
+  parameters:
+    - name: phase_id
+      in: path
+      description: phase id to delete
+      required: true
+      schema:
+        type: integer
+  responses:
+    '204':
+      description: Successful deletion will return a 204 response status.
+      content: {}
+    '404':
+      description: The phase does not exist.
+      content: {}
+patch:
+  tags:
+    - Phases
+  summary: Update a phase's details
+  operationId: updatePhase
+  parameters:
+    - name: phase_id
+      in: path
+      description: The phase's id
+      required: true
+      schema:
+        type: integer
+  requestBody:
+    description: The phase data to update
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/Phase.yaml
+      application/xml:
+        schema:
+          $ref: ../components/schemas/Phase.yaml
+    required: false
+  responses:
+    '200':
+      description: >-
+        On a successful update of a phase, the response returns the full
+        information about that phase.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Phase.yaml
+        application/xml:
+          schema:
+            $ref: ../components/schemas/Phase.yaml
+    '422':
+      description: Data validation failure.
+      content: {}
+  x-codegen-request-body-name: data

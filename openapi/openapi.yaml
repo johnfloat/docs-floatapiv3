@@ -1,0 +1,91 @@
+openapi: 3.0.1
+info:
+  title: API Reference
+  description: This API allows 3rd party integration of your Float data.
+  version: 3.0.0
+servers:
+  - url: 'https://api.float.com/v3'
+tags:
+  - name: People
+    description: The /people endpoint
+  - name: Projects
+    description: The /projects endpoint
+  - name: Phases
+    description: The /phases endpoint
+  - name: Tasks
+    description: The /tasks endpoint
+  - name: Time Off
+    description: The /timeoffs endpoint
+  - name: Time Off Types
+    description: The /timeoff-types endpoint
+  - name: Clients
+    description: The /clients endpoint
+  - name: Accounts
+    description: The /accounts endpoint
+  - name: Departments
+    description: The /departments endpoint
+  - name: Logged Time
+    description: The /logged-time endpoint
+  - name: Milestones
+    description: The /milestones endpoint
+  - name: Team Holidays
+    description: The /holidays endpoint
+  - name: Reports
+    description: The /reports endpoint
+  - name: Statuses
+    description: The /status endpoint
+paths:
+  /departments:
+    $ref: paths/departments.yaml
+  '/departments/{department_id}':
+    $ref: 'paths/departments@{department_id}.yaml'
+  /reports/people:
+    $ref: paths/reports@people.yaml
+  /reports/projects:
+    $ref: paths/reports@projects.yaml
+  /projects:
+    $ref: paths/projects.yaml
+  '/projects/{project_id}':
+    $ref: 'paths/projects@{project_id}.yaml'
+  /phases:
+    $ref: paths/phases.yaml
+  '/phases/{phase_id}':
+    $ref: 'paths/phases@{phase_id}.yaml'
+  /people:
+    $ref: paths/people.yaml
+  '/people/{people_id}':
+    $ref: 'paths/people@{people_id}.yaml'
+  /tasks:
+    $ref: paths/tasks.yaml
+  '/tasks/{task_id}':
+    $ref: 'paths/tasks@{task_id}.yaml'
+  /clients:
+    $ref: paths/clients.yaml
+  '/clients/{client_id}':
+    $ref: 'paths/clients@{client_id}.yaml'
+  /accounts:
+    $ref: paths/accounts.yaml
+  /holidays:
+    $ref: paths/holidays.yaml
+  '/holidays/{holiday_id}':
+    $ref: 'paths/holidays@{holiday_id}.yaml'
+  /logged-time:
+    $ref: paths/logged-time.yaml
+  '/logged-time/{logged_time_id}':
+    $ref: 'paths/logged-time@{logged_time_id}.yaml'
+  /milestones:
+    $ref: paths/milestones.yaml
+  '/milestones/{milestone_id}':
+    $ref: 'paths/milestones@{milestone_id}.yaml'
+  /timeoffs:
+    $ref: paths/timeoffs.yaml
+  '/timeoffs/{timeoff_id}':
+    $ref: 'paths/timeoffs@{timeoff_id}.yaml'
+  /timeoff-types:
+    $ref: paths/timeoff-types.yaml
+  '/timeoff-types/{timeoff_type_id}':
+    $ref: 'paths/timeoff-types@{timeoff_type_id}.yaml'
+  /status:
+    $ref: paths/status.yaml
+  '/status/{status_id}':
+    $ref: 'paths/status@{status_id}.yaml'

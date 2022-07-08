@@ -1,0 +1,72 @@
+get:
+  tags:
+    - Projects
+  summary: Retrieve a single project.
+  description: Retrieve a single project
+  operationId: getProject
+  parameters:
+    - name: project_id
+      in: path
+      description: The project's ID
+      required: true
+      schema:
+        type: integer
+  responses:
+    '200':
+      description: Details of a single project
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Project.yaml
+        application/xml:
+          schema:
+            $ref: ../components/schemas/Project.yaml
+    '404':
+      description: The project does not exist.
+      content: {}
+delete:
+  tags:
+    - Projects
+  summary: Delete a project
+  operationId: deleteProject
+  parameters:
+    - name: project_id
+      in: path
+      description: project id to delete
+      required: true
+      schema:
+        type: integer
+  responses:
+    '204':
+      description: Successful deletion will return a 204 response status.
+      content: {}
+    '404':
+      description: The project does not exist.
+      content: {}
+patch:
+  tags:
+    - Projects
+  summary: Update a project's details
+  operationId: updateProject
+  parameters:
+    - name: project_id
+      in: path
+      description: The project's id
+      required: true
+      schema:
+        type: integer
+  responses:
+    '200':
+      description: >-
+        On a successful update of a project, the response returns the full
+        information about that project.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Project.yaml
+        application/xml:
+          schema:
+            $ref: ../components/schemas/Project.yaml
+    '422':
+      description: Data validation failure.
+      content: {}

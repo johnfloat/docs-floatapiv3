@@ -1,0 +1,72 @@
+get:
+  tags:
+    - Statuses
+  summary: Retrieve a single status
+  description: Returns a single status.
+  operationId: getStatus
+  parameters:
+    - name: status_id
+      in: path
+      description: The status's id
+      required: true
+      schema:
+        type: integer
+  responses:
+    '200':
+      description: Details of a single status.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Status.yaml
+        application/xml:
+          schema:
+            $ref: ../components/schemas/Status.yaml
+    '404':
+      description: The status does not exist.
+      content: {}
+delete:
+  tags:
+    - Statuses
+  summary: Delete a status
+  operationId: deleteStatus
+  parameters:
+    - name: status_id
+      in: path
+      description: status id to delete
+      required: true
+      schema:
+        type: integer
+  responses:
+    '204':
+      description: Successful deleting of a status will return a 204 response status code.
+      content: {}
+    '404':
+      description: The status does not exist.
+      content: {}
+patch:
+  tags:
+    - Statuses
+  summary: Update a status's details
+  operationId: updateStatus
+  parameters:
+    - name: status_id
+      in: path
+      description: The status's id
+      required: true
+      schema:
+        type: integer
+  responses:
+    '200':
+      description: >-
+        On a successful update of a status, the response returns the full
+        information about that status.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Status.yaml
+        application/xml:
+          schema:
+            $ref: ../components/schemas/Status.yaml
+    '422':
+      description: Data validation failure.
+      content: {}

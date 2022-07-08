@@ -1,0 +1,70 @@
+get:
+  tags:
+    - Clients
+  summary: Retrieve a single client
+  description: Returns a single client.
+  operationId: getClient
+  parameters:
+    - name: client_id
+      in: path
+      description: The client's ID
+      required: true
+      schema:
+        type: integer
+  responses:
+    '200':
+      description: A client
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Client.yaml
+        application/xml:
+          schema:
+            $ref: ../components/schemas/Client.yaml
+delete:
+  tags:
+    - Clients
+  summary: Delete a client
+  operationId: deleteClient
+  parameters:
+    - name: client_id
+      in: path
+      description: client id to delete
+      required: true
+      schema:
+        type: integer
+  responses:
+    '204':
+      description: Successful deletion will return a 204 response status.
+      content: {}
+    '404':
+      description: The client does not exist.
+      content: {}
+patch:
+  tags:
+    - Clients
+  summary: Update a client's name
+  operationId: updateClient
+  parameters:
+    - name: client_id
+      in: path
+      description: The client's ID
+      required: true
+      schema:
+        type: integer
+  responses:
+    '200':
+      description: >-
+        On a successful update of a client, the response returns the full
+        information about that client.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Client.yaml
+        application/xml:
+          schema:
+            $ref: ../components/schemas/Client.yaml
+    '422':
+      description: |
+        Data validation failure.
+      content: {}

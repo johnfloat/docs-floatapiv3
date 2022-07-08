@@ -1,0 +1,42 @@
+get:
+  tags:
+    - Accounts
+  summary: List accounts
+  operationId: getAccounts
+  responses:
+    '200':
+      description: >
+        List of accounts that have been granted access to this team. Note that
+        the API does not currently support account creation. People can be
+        granted account access via the app. Account Owner = 1, Admin = 2,
+        Project Manager = 3, Member = 4, Billing = 5
+      headers:
+        X-Pagination-Current-Page:
+          description: Current page number
+          schema:
+            type: integer
+        X-Pagination-Total-Count:
+          description: Total number of items
+          schema:
+            type: integer
+        X-Pagination-Page-Count:
+          description: Total number of pages
+          schema:
+            type: integer
+        X-Pagination-Per-Page:
+          description: Number of items per page
+          schema:
+            type: integer
+      content:
+        application/json:
+          schema:
+            title: Array of accounts
+            type: array
+            items:
+              $ref: ../components/schemas/Account.yaml
+        application/xml:
+          schema:
+            title: Array of accounts
+            type: array
+            items:
+              $ref: ../components/schemas/Account.yaml

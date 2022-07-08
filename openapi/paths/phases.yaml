@@ -1,0 +1,69 @@
+get:
+  tags:
+    - Phases
+  summary: List phases
+  operationId: getPhases
+  responses:
+    '200':
+      description: The list of phases
+      headers:
+        X-Pagination-Current-Page:
+          description: Current page number
+          schema:
+            type: integer
+        X-Pagination-Total-Count:
+          description: Total number of items
+          schema:
+            type: integer
+        X-Pagination-Page-Count:
+          description: Total number of pages
+          schema:
+            type: integer
+        X-Pagination-Per-Page:
+          description: Number of items per page
+          schema:
+            type: integer
+      content:
+        application/json:
+          schema:
+            title: Array of phases
+            type: array
+            items:
+              $ref: ../components/schemas/Phase.yaml
+        application/xml:
+          schema:
+            title: Array of phases
+            type: array
+            items:
+              $ref: ../components/schemas/Phase.yaml
+post:
+  tags:
+    - Phases
+  summary: Add a new phase
+  operationId: addPhase
+  requestBody:
+    description: The phase to create
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/Phase.yaml
+      application/xml:
+        schema:
+          $ref: ../components/schemas/Phase.yaml
+    required: false
+  responses:
+    '201':
+      description: >-
+        If the phase was succesfully created, the response returns the full
+        information about that phase.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Phase.yaml
+        application/xml:
+          schema:
+            $ref: ../components/schemas/Phase.yaml
+    '422':
+      description: Data validation failure.
+      content: {}
+  x-codegen-request-body-name: data

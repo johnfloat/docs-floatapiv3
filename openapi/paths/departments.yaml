@@ -1,0 +1,69 @@
+get:
+  tags:
+    - Departments
+  summary: List departments
+  operationId: getDepartments
+  responses:
+    '200':
+      description: List of departments
+      headers:
+        X-Pagination-Current-Page:
+          description: Current page number
+          schema:
+            type: integer
+        X-Pagination-Total-Count:
+          description: Total number of items
+          schema:
+            type: integer
+        X-Pagination-Page-Count:
+          description: Total number of pages
+          schema:
+            type: integer
+        X-Pagination-Per-Page:
+          description: Number of items per page
+          schema:
+            type: integer
+      content:
+        application/json:
+          schema:
+            title: Array of departments
+            type: array
+            items:
+              $ref: ../components/schemas/Department.yaml
+        application/xml:
+          schema:
+            title: Array of departments
+            type: array
+            items:
+              $ref: ../components/schemas/Department.yaml
+post:
+  tags:
+    - Departments
+  summary: Add a new department
+  operationId: addDepartment
+  requestBody:
+    description: The department to create.
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/Department.yaml
+      application/xml:
+        schema:
+          $ref: ../components/schemas/Department.yaml
+    required: false
+  responses:
+    '201':
+      description: >-
+        If the department was succesfully created, the response returns the full
+        information about that department.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Department.yaml
+        application/xml:
+          schema:
+            $ref: ../components/schemas/Department.yaml
+    '422':
+      description: Data validation failure.
+      content: {}
+  x-codegen-request-body-name: department

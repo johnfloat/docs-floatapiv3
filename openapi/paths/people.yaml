@@ -1,0 +1,82 @@
+get:
+  tags:
+    - People
+  summary: List people
+  description: |
+    Search for all people in your organization.
+  operationId: getPeople
+  parameters:
+    - name: page
+      in: query
+      description: The page number of the page of results to return
+      schema:
+        type: integer
+    - name: per-page
+      in: query
+      description: The number of items per page
+      schema:
+        type: integer
+  responses:
+    '200':
+      description: The list of people
+      headers:
+        X-Pagination-Current-Page:
+          description: Current page number
+          schema:
+            type: integer
+        X-Pagination-Total-Count:
+          description: Total number of items
+          schema:
+            type: integer
+        X-Pagination-Page-Count:
+          description: Total number of pages
+          schema:
+            type: integer
+        X-Pagination-Per-Page:
+          description: Number of items per page
+          schema:
+            type: integer
+      content:
+        application/json:
+          schema:
+            title: Array of people
+            type: array
+            items:
+              $ref: ../components/schemas/Person.yaml
+        application/xml:
+          schema:
+            title: Array of people
+            type: array
+            items:
+              $ref: ../components/schemas/Person.yaml
+post:
+  tags:
+    - People
+  summary: Add a new person
+  operationId: addPerson
+  requestBody:
+    description: The client to create
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/Person.yaml
+      application/xml:
+        schema:
+          $ref: ../components/schemas/Person.yaml
+    required: false
+  responses:
+    '201':
+      description: >-
+        If the person was succesfully created, the response returns the full
+        information about that person.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Person.yaml
+        application/xml:
+          schema:
+            $ref: ../components/schemas/Person.yaml
+    '422':
+      description: Data validation failure.
+      content: {}
+  x-codegen-request-body-name: body

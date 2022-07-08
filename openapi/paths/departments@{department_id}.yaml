@@ -1,0 +1,72 @@
+get:
+  tags:
+    - Departments
+  summary: Retrieve a single department
+  description: Returns a single department.
+  operationId: getDepartment
+  parameters:
+    - name: department_id
+      in: path
+      description: The department's id
+      required: true
+      schema:
+        type: integer
+  responses:
+    '200':
+      description: Details of a single department.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Department.yaml
+        application/xml:
+          schema:
+            $ref: ../components/schemas/Department.yaml
+    '404':
+      description: The department does not exist.
+      content: {}
+delete:
+  tags:
+    - Departments
+  summary: Delete a department
+  operationId: deleteDepartment
+  parameters:
+    - name: department_id
+      in: path
+      description: department id to delete
+      required: true
+      schema:
+        type: integer
+  responses:
+    '204':
+      description: Successful deleting of a department will return a 204 response status.
+      content: {}
+    '404':
+      description: The department does not exist.
+      content: {}
+patch:
+  tags:
+    - Departments
+  summary: Update a department's details
+  operationId: updateDepartment
+  parameters:
+    - name: department_id
+      in: path
+      description: The department's id
+      required: true
+      schema:
+        type: integer
+  responses:
+    '200':
+      description: >-
+        On a successful update of a department, the response returns the full
+        information about that department.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Department.yaml
+        application/xml:
+          schema:
+            $ref: ../components/schemas/Department.yaml
+    '422':
+      description: Data validation failure.
+      content: {}

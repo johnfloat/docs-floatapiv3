@@ -1,0 +1,71 @@
+get:
+  tags:
+    - Milestones
+  summary: List project milestones
+  operationId: getMilestones
+  responses:
+    '200':
+      description: list of milestones for a project
+      headers:
+        X-Pagination-Current-Page:
+          description: Current page number
+          schema:
+            type: integer
+        X-Pagination-Total-Count:
+          description: Total number of items
+          schema:
+            type: integer
+        X-Pagination-Page-Count:
+          description: Total number of pages
+          schema:
+            type: integer
+        X-Pagination-Per-Page:
+          description: Number of items per page
+          schema:
+            type: integer
+      content:
+        application/json:
+          schema:
+            title: Array of milestones
+            type: array
+            items:
+              $ref: ../components/schemas/Milestone.yaml
+        application/xml:
+          schema:
+            title: Array of milestones
+            type: array
+            items:
+              $ref: ../components/schemas/Milestone.yaml
+post:
+  tags:
+    - Milestones
+  summary: Add a new project milestone
+  operationId: addMilestone
+  requestBody:
+    description: The milestone to create
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/Milestone.yaml
+      application/xml:
+        schema:
+          $ref: ../components/schemas/Milestone.yaml
+    required: false
+  responses:
+    '201':
+      description: >-
+        If the milestone was succesfully created, the response returns the full
+        information about that milestone.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Milestone.yaml
+        application/xml:
+          schema:
+            $ref: ../components/schemas/Milestone.yaml
+    '422':
+      description: >
+        Data validation failure if fields are missing or the milestone already
+        exists.
+      content: {}
+  x-codegen-request-body-name: milestone

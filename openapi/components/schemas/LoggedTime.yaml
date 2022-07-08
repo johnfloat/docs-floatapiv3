@@ -1,0 +1,78 @@
+title: LoggedTime
+required:
+  - date
+  - hours
+  - people_id
+  - project_id
+type: object
+properties:
+  logged_time_id:
+    type: string
+    description: Unique ID of the logged time entry
+    example: 5e38963be429adc74664c777
+  date:
+    type: string
+    description: Date of the logged time entry
+    format: 'date:YYYY-MM-DD'
+    example: 2020-12-12T00:00:00.000Z
+  hours:
+    type: number
+    format: float
+    example: 5.25
+  billable:
+    type: integer
+    description: 'Is the logged time entry billable? (1 = true, 0 = false)'
+    example: 1
+  notes:
+    type: string
+    description: Additional notes about this logged time entry
+    example: >-
+      This took a lot longer than planned because I didn't have the original
+      illustrations
+  people_id:
+    type: integer
+    description: The ID of the person for whom this entry was logged
+    example: 9876
+  project_id:
+    type: integer
+    description: The ID of the project on which this entry was logged
+    example: 4567
+  phase_id:
+    type: integer
+    description: The ID of the project phase for which this entry was logged
+    example: 335
+  task_id:
+    type: integer
+    description: The ID of the scheduled task against which this entry was logged
+    example: 7654
+  task_name:
+    type: string
+    description: The name of the task against which this entry was logged
+    example: Front-end Development
+  locked:
+    type: integer
+    description: 'Is the logged time entry locked? (1 = true, 0 = false) **read-only**'
+    example: 1
+  locked_date:
+    type: string
+    description: Date this logged time entry was last locked **read-only**
+    format: 'date:YYYY-MM-DD'
+    example: 2020-07-01T00:00:00.000Z
+  created:
+    type: string
+    description: Date/time this record was created **read-only**
+    format: ISODate
+    example: 2020-07-01T13:02:00.000Z
+  created_by:
+    type: integer
+    description: ID of the account that created this record **read-only**
+    example: 87655
+  modified:
+    type: string
+    description: Date/time this record was last modified **read-only**
+    format: ISODate
+    example: 2020-07-01T13:02:00.000Z
+  modified_by:
+    type: integer
+    description: ID of the account that last modified this record. **read-only**
+    example: 87655

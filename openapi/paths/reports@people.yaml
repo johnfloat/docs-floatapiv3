@@ -1,0 +1,21 @@
+get:
+  tags:
+    - Reports
+  summary: Retrieve a single person report
+  description: >-
+    Returns a single person report. (Note: request limits are lower for report
+    endpoints.)
+  operationId: getReportPeople
+  responses:
+    '200':
+      description: A single person report between two dates.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ReportsPeople.yaml
+        application/xml:
+          schema:
+            $ref: ../components/schemas/ReportsPeople.yaml
+    '404':
+      description: The report does not exist.
+      content: {}

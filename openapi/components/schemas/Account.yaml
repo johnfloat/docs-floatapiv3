@@ -1,0 +1,50 @@
+title: Account
+required:
+  - email
+  - name
+type: object
+properties:
+  account_id:
+    type: integer
+    description: The ID of this account. Read-only
+    example: 1
+  name:
+    maxLength: 200
+    type: string
+    description: The name of the account
+    example: Donna Nobel
+  email:
+    maxLength: 200
+    type: string
+    description: Email address for this account
+    example: donna@example.com
+  account_type:
+    type: integer
+    description: Account type
+    example: 1
+  department_filter_id:
+    type: integer
+    description: The department ID if this account is filtered by a department
+    example: 443
+  view_rights:
+    type: integer
+    description: 'Do they have rights to view the team? 1 = Yes, 0 = No'
+    example: 0
+  edit_rights:
+    type: integer
+    description: >-
+      If they're a Member, do they have rights to edit their schedule? 1 = Yes,
+      0 = No
+    example: 0
+  active:
+    type: integer
+    description: 'Is this account active? 1 = Yes, 0 = No'
+    example: 1
+  created:
+    type: string
+    description: Date this record was created (read-only)
+    example: 2019-02-05T00:00:00.000Z
+  modified:
+    type: string
+    description: Date this record was last modified (read-only)
+    example: 2019-08-02T09:21:13.000Z

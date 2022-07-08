@@ -1,0 +1,70 @@
+get:
+  tags:
+    - Time Off
+  summary: Retrieve a single time off
+  description: Returns a single time off.
+  operationId: getTimeoff
+  parameters:
+    - name: timeoff_id
+      in: path
+      description: The time off's ID
+      required: true
+      schema:
+        type: integer
+  responses:
+    '200':
+      description: A time off
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Timeoff.yaml
+        application/xml:
+          schema:
+            $ref: ../components/schemas/Timeoff.yaml
+delete:
+  tags:
+    - Time Off
+  summary: Delete a time off record
+  operationId: deleteTimeoff
+  parameters:
+    - name: timeoff_id
+      in: path
+      description: time off id to delete
+      required: true
+      schema:
+        type: integer
+  responses:
+    '204':
+      description: Successful deletion will return a 204 response status.
+      content: {}
+    '404':
+      description: The time off record does not exist.
+      content: {}
+patch:
+  tags:
+    - Time Off
+  summary: Update a time off's details
+  operationId: updateTimeoff
+  parameters:
+    - name: timeoff_id
+      in: path
+      description: The time off's ID
+      required: true
+      schema:
+        type: integer
+  responses:
+    '200':
+      description: >-
+        On a successful update of a time off, the response returns the full
+        information about that time off.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Timeoff.yaml
+        application/xml:
+          schema:
+            $ref: ../components/schemas/Timeoff.yaml
+    '422':
+      description: |
+        Data validation failure.
+      content: {}

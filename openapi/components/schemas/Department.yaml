@@ -1,0 +1,14 @@
+title: Department
+required:
+  - name
+type: object
+properties:
+  department_id:
+    type: integer
+    description: The ID of this department. Read-only
+    example: 123
+  name:
+    maxLength: 200
+    type: string
+    description: The name of the department
+    example: Engineers

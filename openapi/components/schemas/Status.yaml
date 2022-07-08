@@ -1,0 +1,48 @@
+title: Status
+required:
+  - people_id
+  - start_date
+  - status_type_id
+type: object
+properties:
+  status_id:
+    type: integer
+    description: The ID of this status (read-only)
+    example: 123
+  status_type_id:
+    type: integer
+    description: The status tye ID of this status
+    example: 1
+  people_id:
+    type: integer
+    description: The ID of the person assigned to this status
+    example: 123456
+  status_name:
+    maxLength: 200
+    type: string
+    description: The name of the status
+    example: Travelling
+  start_date:
+    type: string
+    description: Start date of this status
+    example: 2019-11-16T00:00:00.000Z
+  end_date:
+    type: string
+    description: End date of this status
+    example: 2019-12-06T00:00:00.000Z
+  created:
+    type: string
+    description: Date this record was created (read-only)
+    example: 2019-02-05T00:00:00.000Z
+  modified:
+    type: string
+    description: Date this record was modified (read-only)
+    example: 2019-02-15T00:00:00.000Z
+  created_by:
+    type: integer
+    description: Account ID of person who created this status (read-only)
+    example: 12345
+  modified_by:
+    type: integer
+    description: Account ID of person who last modified this status (read-only)
+    example: 12345

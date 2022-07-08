@@ -1,0 +1,10 @@
+title: PeopleTag
+required:
+  - name
+type: object
+properties:
+  name:
+    maxLength: 64
+    type: string
+    description: The name of the tag
+    example: east coast

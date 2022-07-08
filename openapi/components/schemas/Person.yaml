@@ -1,0 +1,93 @@
+title: Person
+required:
+  - name
+  - people_id
+type: object
+properties:
+  people_id:
+    type: integer
+    description: >-
+      The unique identifier for this person. Read-only: ignored when creating a
+      person
+    example: 1
+  name:
+    maxLength: 150
+    type: string
+    description: The person's full name
+    example: Sarah-Jane Smith
+  email:
+    maxLength: 200
+    type: string
+    description: Email address for this person
+    example: sarahjane@example.com
+  job_title:
+    maxLength: 200
+    type: string
+    description: The person's job title
+    example: Designer
+  department:
+    $ref: ./Department.yaml
+  notes:
+    maxLength: 65535
+    type: string
+    description: Any notes related to this person
+    example: Sarah-Jane can't work on weekends.
+  avatar_file:
+    maxLength: 40
+    type: string
+    description: Filename of thumbnail image for this person (read-only)
+    example: ''
+  auto_email:
+    type: integer
+    description: 'Should this person''s schedule be emailed at start of week? 1 = Yes, 0 = No'
+    example: 0
+  employee_type:
+    type: integer
+    description: 'Full-time or part-type. 1 = Full-time, 0  = Part-time'
+    example: 0
+  work_days_hours:
+    type: array
+    description: >-
+      Hours that a part-time person is available for scheduling each day in
+      order from Sunday to Saturday
+    example:
+      - 0
+      - 8
+      - 8
+      - 8
+      - 8
+      - 4
+      - 0
+    items:
+      type: integer
+  active:
+    type: integer
+    description: 'Is this person active or archived? 1 = Active, 0 = Archived'
+    example: 1
+  people_type_id:
+    type: integer
+    description: 'Is this person an 1 = Employee (default), 2 = Contractor, 3 = Placeholder?'
+    example: 1
+  tags:
+    type: array
+    items:
+      $ref: ./PeopleTag.yaml
+  start_date:
+    type: string
+    description: Date the person started
+    example: 2019-05-20T00:00:00.000Z
+  end_date:
+    type: string
+    description: Date the person finished
+    example: 2019-11-11T00:00:00.000Z
+  default_hourly_rate:
+    type: integer
+    description: Default hourly rate for fee-based projects
+  created:
+    type: string
+    description: Date this record was created (read-only)
+    example: 2019-05-07T10:26:49.000Z
+  modified:
+    type: string
+    description: Date this record was last modified (read-only)
+    example: 2019-05-07T11:26:49.000Z

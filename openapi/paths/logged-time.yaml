@@ -1,0 +1,95 @@
+get:
+  tags:
+    - Logged Time
+  summary: List logged time for a project or person.
+  description: >-
+    Returns a list of logged time for the specified person or project within the
+    specified date range
+  operationId: getLoggedTimes
+  parameters:
+    - name: people_id
+      in: query
+      description: >-
+        ID of the person for whom to list logged time **required if project_id
+        omitted**
+      schema:
+        type: integer
+    - name: project_id
+      in: query
+      description: >-
+        ID of the project for which to list logged time **required if people_id
+        omitted**
+      schema:
+        type: integer
+    - name: start_date
+      in: query
+      description: Start of date range in format YYYY-MM-DD
+      required: true
+      schema:
+        type: string
+        format: 'date:YYYY-MM-DD'
+    - name: end_date
+      in: query
+      description: End of date range in format YYYY-MM-DD
+      required: true
+      allowEmptyValue: false
+      schema:
+        type: string
+        format: 'date:YYYY-MM-DD'
+  responses:
+    '200':
+      description: >-
+        An array of logged time entries for the specified person/project between
+        the specified dates
+      content:
+        application/json:
+          schema:
+            title: Array of logged time entries
+            type: array
+            items:
+              $ref: ../components/schemas/LoggedTime.yaml
+        application/xml:
+          schema:
+            title: Array of logged time entries
+            type: array
+            items:
+              $ref: ../components/schemas/LoggedTime.yaml
+    '403':
+      description: Time Tracking is not enabled for this team
+      content: {}
+    '422':
+      description: Data validation error
+      content: {}
+post:
+  tags:
+    - Logged Time
+  summary: Log time for a person.
+  description: Create a logged time entry for a person
+  operationId: addLoggedTime
+  requestBody:
+    description: Logged time
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/LoggedTime.yaml
+      application/xml:
+        schema:
+          $ref: ../components/schemas/LoggedTime.yaml
+    required: true
+  responses:
+    '201':
+      description: If the time was successfully logged the response includes the full entry
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/LoggedTime.yaml
+        application/xml:
+          schema:
+            $ref: ../components/schemas/LoggedTime.yaml
+    '403':
+      description: Time Tracking is not enabled for this team
+      content: {}
+    '422':
+      description: Data validation error
+      content: {}
+  x-codegen-request-body-name: LoggedTime

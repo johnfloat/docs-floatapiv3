@@ -1,0 +1,14 @@
+title: ProjectTag
+required:
+  - project_id
+  - tag_name
+type: object
+properties:
+  tag_name:
+    maxLength: 32
+    type: string
+    description: The name of the tag
+    example: mobile
+  project_id:
+    type: integer
+    description: The project that this tag belongs to

@@ -1,0 +1,70 @@
+get:
+  tags:
+    - Team Holidays
+  summary: List holidays
+  operationId: getHolidays
+  responses:
+    '200':
+      description: List of holidays that are blocked out in the schedule.
+      headers:
+        X-Pagination-Current-Page:
+          description: Current page number
+          schema:
+            type: integer
+        X-Pagination-Total-Count:
+          description: Total number of items
+          schema:
+            type: integer
+        X-Pagination-Page-Count:
+          description: Total number of pages
+          schema:
+            type: integer
+        X-Pagination-Per-Page:
+          description: Number of items per page
+          schema:
+            type: integer
+      content:
+        application/json:
+          schema:
+            title: Array of holidays
+            type: array
+            items:
+              $ref: ../components/schemas/Holiday.yaml
+        application/xml:
+          schema:
+            title: Array of holidays
+            type: array
+            items:
+              $ref: ../components/schemas/Holiday.yaml
+post:
+  tags:
+    - Team Holidays
+  summary: Block out times throughout the year when the office is closed
+  operationId: addHoliday
+  requestBody:
+    description: The holiday to create
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/Holiday.yaml
+      application/xml:
+        schema:
+          $ref: ../components/schemas/Holiday.yaml
+    required: false
+  responses:
+    '201':
+      description: >-
+        If the holiday was succesfully created, the response returns the full
+        information about that holiday.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Holiday.yaml
+        application/xml:
+          schema:
+            $ref: ../components/schemas/Holiday.yaml
+    '422':
+      description: |
+        Data validation failure.
+      content: {}
+  x-codegen-request-body-name: holiday

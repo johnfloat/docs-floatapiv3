@@ -1,0 +1,23 @@
+title: Timeoff Type
+required:
+  - timeoff_type_name
+type: object
+properties:
+  timeoff_type_id:
+    type: integer
+    description: >-
+      The ID of this time off type. Read-only: ignored when creating a time off
+      type
+    example: 1
+  timeoff_type_name:
+    type: string
+    description: The name of this time off type
+    example: Summer Fridays
+  color:
+    type: string
+    description: Time off type's color in hexadecimal
+    example: 3190cf
+  created_by:
+    type: integer
+    description: Account ID of person who created this time off type (read-only)
+    example: 12345

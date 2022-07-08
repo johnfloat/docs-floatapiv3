@@ -1,0 +1,94 @@
+title: Task
+required:
+  - end_date
+  - hours
+  - project_id
+  - start_date
+type: object
+properties:
+  task_id:
+    type: integer
+    description: 'The ID of this task. Read-only: ignored when creating a task'
+    example: 1
+  project_id:
+    type: integer
+    description: The ID of the project that this task belongs to
+    example: 1345
+  phase_id:
+    type: integer
+    description: The ID of the project phase that this task belongs to
+    example: 153
+  start_date:
+    type: string
+    description: Start date of this task
+    example: 2019-11-16T00:00:00.000Z
+  end_date:
+    type: string
+    description: End date of this task
+    example: 2019-11-22T00:00:00.000Z
+  start_time:
+    type: string
+    description: Start time of this task in 24 hr format
+    example: 840
+  hours:
+    type: number
+    description: Number of hours per day to spend on this task
+    example: 4.5
+  people_id:
+    type: integer
+    description: >-
+      The ID of the person assigned to this task (omit when using people_ids
+      field)
+    example: 11
+  people_ids:
+    type: array
+    description: >-
+      List of one or more people IDs assigned to this task (ignored if people_id
+      is set)
+    example:
+      - '1234'
+      - '5678'
+    items:
+      type: integer
+  status:
+    type: integer
+    description: 'Status of this task. 1 = Tentative, 2 = Confirmed, 3 = Complete'
+    example: 2
+  priority:
+    type: integer
+    description: 'Is this task a priority? 1 = Priority, 0 = Not a priority'
+    example: 0
+  name:
+    type: string
+    description: Name of this task
+    example: Concepting
+  notes:
+    type: string
+    description: Additional notes about the task
+    example: Sketches and wireframes only.
+  repeat_state:
+    type: integer
+    description: >-
+      Frequency that this task repeats. 0 = No repeat, 1 = Weekly, 2 = Monthly,
+      3 = Every 2 Weeks
+    example: 0
+  repeat_end_date:
+    type: string
+    description: Date that the repeating task will cease
+    example: 2019-03-16T00:00:00.000Z
+  created_by:
+    type: integer
+    description: Account ID of person who created this task (read-only)
+    example: 23332
+  created:
+    type: string
+    description: Date this record was created (read-only)
+    example: 2019-02-05T00:00:00.000Z
+  modified_by:
+    type: integer
+    description: Account ID of person who last modified this task (read-only)
+    example: 23332
+  modified:
+    type: string
+    description: Date this record was last modified (read-only)
+    example: 2019-08-02T09:21:13.000Z
